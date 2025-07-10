@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral-900: #141d2f;
+  --color-neutral-800: #1e2a47;
+  --color-neutral-700: #2b3442;
+  --color-neutral-500: #4b6a9b;
+  --color-neutral-300: #697c9a;
+  --color-neutral-200: #90a4d4;
+  --color-neutral-100: #f6f8ff;
+  --color-neutral-0: #ffffff;
+  --color-blue-300: #60abff;
+  --color-blue-500: #0079ff;
+  --color-red-500: #f74646;
+
+  --breakpoint-md: 800px;
+}
+
+:root {
+  --mainfont: "Space Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #edf1ff;
+  font-family: var(--mainfont);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
