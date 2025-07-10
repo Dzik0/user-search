@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import "./globals.css";
 import { Space_Mono } from "next/font/google";
 import { createContext, useState } from "react";
@@ -34,7 +35,14 @@ export default function RootLayout({
   return (
     <ThemeContext.Provider value={{ darkMode, changeMode }}>
       <html lang="en">
-        <body className={spaceMono.className}>{children}</body>
+        <body
+          className={clsx(
+            spaceMono.className,
+            `${darkMode ? "bg-neutral-900" : "bg-[#edf1ff]"}`,
+          )}
+        >
+          {children}
+        </body>
       </html>
     </ThemeContext.Provider>
   );
