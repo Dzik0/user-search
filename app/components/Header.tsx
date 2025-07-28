@@ -30,7 +30,7 @@ export default function Header({ darkMode, changeMode }: Props) {
         )}
         onClick={changeMode}
       >
-        dark{" "}
+        {darkMode ? "light mode" : "dark mode"}
         <span>
           {" "}
           <Image
