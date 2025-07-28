@@ -29,7 +29,6 @@ export default function RootLayout({
 
   function changeMode() {
     setDarkMode((prevS) => !prevS);
-    console.log(darkMode);
   }
 
   return (

@@ -7,7 +7,6 @@ type Props = {
   darkMode: boolean;
 };
 export default function FormFill({ darkMode }: Props) {
-  console.log(darkMode);
   return (
     <div
       className={clsx(
