@@ -74,14 +74,16 @@ export default function Profile({ darkMode }: Props) {
       )}
     >
       <div className="flex gap-6">
-        <div className="w-23 overflow-hidden rounded-[50%]">
-          <Image
-            src={user?.avatar_url || userImg}
-            width={200}
-            height={200}
-            style={{ objectFit: "cover" }}
-            alt="User Icon"
-          />
+        <div>
+          <div className="w-23 overflow-hidden rounded-[50%] md:w-30">
+            <Image
+              src={user?.avatar_url || userImg}
+              width={200}
+              height={200}
+              style={{ objectFit: "cover" }}
+              alt="User Icon"
+            />
+          </div>
         </div>
         <div className="flex w-full flex-col gap-1 md:flex-row md:justify-between">
           <div className="flex flex-col gap-1">
