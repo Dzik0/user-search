@@ -3,16 +3,8 @@
 import clsx from "clsx";
 import "./globals.css";
 import { Space_Mono } from "next/font/google";
-import { createContext, useState } from "react";
-
-type ThemeContextType = {
-  darkMode: boolean;
-  changeMode: () => void;
-};
-
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined,
-);
+import { useState } from "react";
+import { ThemeContext } from "./components/ThemeContext";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],

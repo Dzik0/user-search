@@ -2,8 +2,8 @@
 
 import FormFill from "./components/FormFill";
 import Profile from "./components/Profile";
-import { useContext } from "react";
-import { ThemeContext } from "./layout";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "./components/ThemeContext";
 import Header from "./components/Header";
 import NoUser from "./components/NoUser";
 import { useSearchParams } from "next/navigation";
@@ -12,7 +12,12 @@ export default function Page() {
   const theme = useContext(ThemeContext);
   if (!theme) throw new Error("ThemeContext not found");
   const { darkMode, changeMode } = theme;
-  const params = useSearchParams().get("user");
+  const [params, setParams] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setParams(searchParams.get("user"));
+  }, [searchParams]);
 
   return (
     <div className="flex justify-center">

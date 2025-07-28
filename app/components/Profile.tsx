@@ -35,29 +35,29 @@ export default function Profile({ darkMode }: Props) {
   const [error, setError] = useState(false);
   const createDate = !error && user?.created_at.split("T")[0];
 
-  async function getData() {
-    const res = await fetch(`https://api.github.com/users/${params}`);
-    if (res.status === 404) {
-      console.log("Cant find");
-      setError(true);
-      return;
-    }
-
-    if (!res) {
-      console.log("Error");
-      setError(true);
-      return;
-    }
-
-    const data = await res.json();
-    setError(false);
-    setUser(data);
-  }
-
   useEffect(() => {
     if (!params) {
       setUser(null);
       return;
+    }
+
+    async function getData() {
+      const res = await fetch(`https://api.github.com/users/${params}`);
+      if (res.status === 404) {
+        console.log("Cant find");
+        setError(true);
+        return;
+      }
+
+      if (!res) {
+        console.log("Error");
+        setError(true);
+        return;
+      }
+
+      const data = await res.json();
+      setError(false);
+      setUser(data);
     }
 
     getData();
