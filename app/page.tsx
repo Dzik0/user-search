@@ -1,35 +1,16 @@
 "use client";
 
-import FormFill from "./components/FormFill";
-import Profile from "./components/Profile";
-import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "./components/ThemeContext";
-import Header from "./components/Header";
-import NoUser from "./components/NoUser";
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import PageContent from "./components/PageContent";
 
 export default function Page() {
-  const theme = useContext(ThemeContext);
-  if (!theme) throw new Error("ThemeContext not found");
-  const { darkMode, changeMode } = theme;
-  const [params, setParams] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    setParams(searchParams.get("user"));
-  }, [searchParams]);
-
   return (
-    <div className="flex justify-center">
-      <div className="flex w-full max-w-[900px] flex-col gap-8 p-3 pt-8">
-        <Header darkMode={darkMode} changeMode={changeMode} />
-        <FormFill darkMode={darkMode} />
-        {params ? (
-          <Profile darkMode={darkMode} />
-        ) : (
-          <NoUser darkMode={darkMode} />
-        )}
-      </div>
-    </div>
+    <Suspense
+      fallback={
+        <div className="flex justify-center p-8 text-lg">Loading...</div>
+      }
+    >
+      <PageContent />
+    </Suspense>
   );
 }
